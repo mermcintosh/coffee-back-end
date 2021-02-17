@@ -10,25 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_16_222417) do
-
-  create_table "coffee_orders", force: :cascade do |t|
-    t.integer "customer_id"
-    t.integer "staff_id"
-    t.boolean "status"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.integer "coffee_id"
-  end
+ActiveRecord::Schema.define(version: 2021_02_16_213353) do
 
   create_table "coffees", force: :cascade do |t|
     t.string "size"
     t.string "roast"
     t.string "cream"
     t.string "sugar"
+    t.boolean "status"
+    t.integer "customer_id"
+    t.integer "staff_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "customer_id"
   end
 
   create_table "customers", force: :cascade do |t|

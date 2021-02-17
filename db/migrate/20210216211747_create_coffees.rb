@@ -5,6 +5,9 @@ class CreateCoffees < ActiveRecord::Migration[6.1]
       t.string :roast
       t.string :cream
       t.string :sugar
+      t.boolean :status
+      t.integer :customer_id
+      t.integer :staff_id
 
       t.timestamps
     end
