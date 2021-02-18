@@ -10,8 +10,11 @@ class CoffeesController < ApplicationController
         end
 
         def create
-            coffee = Coffee.create(coffee_params)
-
+            coffee = Coffee.new(coffee_params)
+            coffee.customer = Customer.first
+            coffee.staff = Staff.first
+            coffee.status = true
+            coffee.save
             render json: coffee
         end
 
@@ -24,7 +27,7 @@ class CoffeesController < ApplicationController
         def destroy
             coffee = Coffee.find(params[:id])
             coffee.destroy
-            render json: {"Deleted": "deleted"}
+            render json: {"Deleted": "deleted", coffee: coffee}
         end
 
         private
