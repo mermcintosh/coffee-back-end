@@ -1,11 +1,12 @@
 class CoffeesController < ApplicationController
-    def index
-        render json: Coffee.all.to_json(coffee_serializer_option)
+    skip_before_action :verify_authenticity_token
+        def index
+            render json: Coffee.all.to_json
         end
     
         def show 
             coffee = Coffee.find(params[:id])
-            render json: coffee.to_json(coffee_serializer_option)
+            render json: coffee.to_json
         end
 
         def create
@@ -32,15 +33,4 @@ class CoffeesController < ApplicationController
             params.require(:coffee).permit(:size, :roast, :cream, :sugar, :status, :customer_id, :staff_id)
         end
 
-        def coffee_serializer_option
-            {
-                :include => {
-                    :comments => {
-                        :except => [:created_at, :updated_at]
-                    }
-                },
-                :except => [:created_at, :updated_at]
-            }
-    
-        end 
 end
