@@ -19,10 +19,15 @@ class CoffeesController < ApplicationController
         end
 
         def update
-            coffee = Coffee.find(params[:id]).update(coffee_params)
-
+            # byebug
+            coffee = Coffee.find(params[:id])
+            coffee.update(coffee_params)
             render json: coffee
         end
+
+        # def edit
+        #     coffee = Coffee.find(params[:id]).update(coffee_params)
+        # end
 
         def destroy
             coffee = Coffee.find(params[:id])
